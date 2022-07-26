@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>npm-package | blog page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="发布自己的 npm 包 npm 官网创建自己的 npm 账号  终端登录 npm 账号   打开 PowerShell，输入 npm login，报错  123&#x2F;&#x2F; 注:npm login必须要通过Https, http:&#x2F;&#x2F;registry.npmjs.org这样也是不行的Beginning October 4, 2021, all connections to the npm registry">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm-package">
+<meta property="og:url" content="http://example.com/2022/07/26/npm-package/index.html">
+<meta property="og:site_name" content="blog page">
+<meta property="og:description" content="发布自己的 npm 包 npm 官网创建自己的 npm 账号  终端登录 npm 账号   打开 PowerShell，输入 npm login，报错  123&#x2F;&#x2F; 注:npm login必须要通过Https, http:&#x2F;&#x2F;registry.npmjs.org这样也是不行的Beginning October 4, 2021, all connections to the npm registry">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/001.png">
+<meta property="og:image" content="http://example.com/images/002.png">
+<meta property="og:image" content="http://example.com/images/003.png">
+<meta property="article:published_time" content="2022-07-26T06:53:02.000Z">
+<meta property="article:modified_time" content="2022-07-26T09:19:08.774Z">
+<meta property="article:author" content="575666596">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="blog page" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">blog page</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">博客测试</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-npm-package" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/26/npm-package/" class="article-date">
+  <time class="dt-published" datetime="2022-07-26T06:53:02.000Z" itemprop="datePublished">2022-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      npm-package
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="发布自己的-npm-包"><a href="#发布自己的-npm-包" class="headerlink" title="发布自己的 npm 包"></a>发布自己的 npm 包</h2><ol>
+<li><p>npm 官网创建自己的 npm 账号</p>
+</li>
+<li><p>终端登录 npm 账号</p>
+</li>
+</ol>
+<p>打开 PowerShell，输入 npm login，报错</p>
+<p><img src="/../images/001.png"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注:npm login必须要通过Https, http://registry.npmjs.org这样也是不行的</span></span><br><span class="line"><span class="title class_">Beginning</span> <span class="title class_">October</span> <span class="number">4</span>, <span class="number">2021</span>, all connections to the npm registry - including</span><br><span class="line"><span class="keyword">for</span> package installation - must use <span class="variable constant_">TLS</span> <span class="number">1.2</span> or higher</span><br></pre></td></tr></table></figure>
+
+<p>网上找了一下，有两种解决方案</p>
+<p><strong>切回 npm 官方镜像</strong><br><strong>登陆时指定为官方镜像</strong></p>
+<p>这里使用第一种方案</p>
+<p>查看 npm 源</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br><span class="line"><span class="comment">// https://registry.npm.taobao.org/</span></span><br></pre></td></tr></table></figure>
+
+<p>设置 npm 官方源</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry <span class="attr">https</span>:<span class="comment">//registry.npmjs.org</span></span><br></pre></td></tr></table></figure>
+
+<p>再次登录，输入账号密码和邮箱，邮箱会收到一次性验证码，一起输入，登录成功。<br><img src="/../images/002.png"></p>
+<p>把 npm 源切回淘宝，接下来要下载 npm 包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// npm设置新淘宝源</span></span><br><span class="line">npm config set <span class="attr">https</span>: <span class="comment">//registry.npmmirror.com</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>初始化 NPM 包</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>配置 eslint，检查语法（非必须）</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init @eslint/config</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>配置 Babel，代码转换</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/core @babel/cli @babel/preset-env</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>编写库文件（库的目录结构最好参考其他库作者的规范），在根目录新建 src 目录，在这里书写源代码，比如</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/math.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params">...arg</span>) =&gt; arg.<span class="title function_">reduce</span>(<span class="function">(<span class="params">pre, next</span>) =&gt;</span> pre += next, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用babel编译文件，在package.json增加脚本命令，运行 yarn build 就可以看到编译后的dist目录</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;babel src --out-dir dist&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>发布</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先设置 npm 官方源</span></span><br><span class="line">npm config set registry <span class="attr">https</span>:<span class="comment">//registry.npmjs.org</span></span><br><span class="line"></span><br><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+
+<p>终端输出<br><img src="/../images/003.png"></p>
+<p>其他人就可以通过 npm 下载了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install custom-funciton</span><br></pre></td></tr></table></figure>
+
+<p>最后切回淘宝</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set <span class="attr">https</span>:<span class="comment">//registry.npmmirror.com</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl61yvjnf0003pwua933xe8dn" data-title="npm-package" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/25/download-resource/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">downloadResource</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/26/npm-package/">npm-package</a>
+          </li>
+        
+          <li>
+            <a href="/2022/07/25/download-resource/">downloadResource</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/10/new-type/">new_type</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/04/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 575666596<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
