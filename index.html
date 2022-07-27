@@ -77,6 +77,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-node-modules-cache" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/27/node-modules-cache/" class="article-date">
+  <time class="dt-published" datetime="2022-07-27T09:36:53.000Z" itemprop="datePublished">2022-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/07/27/node-modules-cache/">node_modules-cache</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="解决-node-modules-缓存造成项目启动时，编译失败。"><a href="#解决-node-modules-缓存造成项目启动时，编译失败。" class="headerlink" title="解决 node_modules 缓存造成项目启动时，编译失败。"></a>解决 node_modules 缓存造成项目启动时，编译失败。</h2><p><strong>场景：新拉公司项目下来，用 yarn 安装依赖，然后启动项目，报错</strong><br><img src="/../images/004.png"></p>
+<p>关掉项目后，用 npm 安装依赖</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @babel/plugin-proposal-<span class="keyword">class</span>-properties</span><br></pre></td></tr></table></figure>
+<p>再次启动项目，yarn start，还是报了同样的错误</p>
+<p>推测是node_modules的缓存问题，</p>
+<p>找到 node_modules目录，手动删除 <strong>.cache</strong> 目录后，问题解决了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/07/27/node-modules-cache/" data-id="cl63f7p260004xwua1vcbeqsl" data-title="node_modules-cache" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-npm-package" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/07/26/npm-package/" class="article-date">
@@ -160,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl61yvjnf0003pwua933xe8dn" data-title="npm-package" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl63f7p260003xwuabs85bec3" data-title="npm-package" class="article-share-link">Share</a>
       
       
       
@@ -222,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/25/download-resource/" data-id="cl61yvjn80000pwuaf8ke5k77" data-title="downloadResource" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/25/download-resource/" data-id="cl63f7p1x0000xwua1p2e8gaq" data-title="downloadResource" class="article-share-link">Share</a>
       
       
       
@@ -312,7 +356,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/10/new-type/" data-id="cl61yvjne0002pwua7w6q8lav" data-title="new_type" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/10/new-type/" data-id="cl63f7p230001xwuabk0l62ip" data-title="new_type" class="article-share-link">Share</a>
       
       
       
@@ -363,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/04/hello-world/" data-id="cl61yvjnc0001pwua8902e41q" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/04/hello-world/" data-id="cl63f7p250002xwuacz7e2uew" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -404,6 +448,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/07/27/node-modules-cache/">node_modules-cache</a>
+          </li>
         
           <li>
             <a href="/2022/07/26/npm-package/">npm-package</a>
