@@ -77,6 +77,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jspdf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/07/29/jspdf/" class="article-date">
+  <time class="dt-published" datetime="2022-07-29T06:50:40.000Z" itemprop="datePublished">2022-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/07/29/jspdf/">jspdf</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="使用-jspdf-导出-canvas-大图"><a href="#使用-jspdf-导出-canvas-大图" class="headerlink" title="使用 jspdf 导出 canvas 大图"></a>使用 jspdf 导出 canvas 大图</h2><p>项目使用了 Konva 开发一个在线绘图功能，<a target="_blank" rel="noopener" href="http://konvajs-doc.bluehymn.com/">Konva</a> 是一个 canvas 库</p>
+<p>用户上传 pdf 门店平面图，绘图结束后，导出 pdf 格式文件，要求是一页大图，不能是多页。</p>
+<p>查阅资料，决定选中 html2canvas + jspdf，因为这一方案有很多使用文章</p>
+<p>摘录一个掘金上点赞较多的<a target="_blank" rel="noopener" href="https://juejin.cn/post/7090368199291568165">文章</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils/htmlToPdf.js：导出页面为PDF格式</span></span><br><span class="line"><span class="keyword">import</span> html2Canvas <span class="keyword">from</span> <span class="string">&quot;html2canvas&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">JsPDF</span> <span class="keyword">from</span> <span class="string">&quot;jspdf&quot;</span>;</span><br><span class="line"></span><br><span class="line">htmlToPdf = <span class="function">(<span class="params">id, title</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">`<span class="subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> opts = &#123;</span><br><span class="line">    <span class="attr">scale</span>: <span class="number">12</span>, <span class="comment">// 缩放比例，提高生成图片清晰度</span></span><br><span class="line">    <span class="attr">useCORS</span>: <span class="literal">true</span>, <span class="comment">// 允许加载跨域的图片</span></span><br><span class="line">    <span class="attr">allowTaint</span>: <span class="literal">false</span>, <span class="comment">// 允许图片跨域，和 useCORS 二者不可共同使用</span></span><br><span class="line">    <span class="attr">tainttest</span>: <span class="literal">true</span>, <span class="comment">// 检测每张图片已经加载完成</span></span><br><span class="line">    <span class="attr">logging</span>: <span class="literal">true</span>, <span class="comment">// 日志开关，发布的时候记得改成 false</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">html2Canvas</span>(element, opts)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function">(<span class="params">canvas</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(canvas);</span><br><span class="line">      <span class="keyword">const</span> contentWidth = canvas.<span class="property">width</span>;</span><br><span class="line">      <span class="keyword">const</span> contentHeight = canvas.<span class="property">height</span>;</span><br><span class="line">      <span class="comment">// 一页pdf显示html页面生成的canvas高度;</span></span><br><span class="line">      <span class="keyword">const</span> pageHeight = (contentWidth / <span class="number">592.28</span>) * <span class="number">841.89</span>;</span><br><span class="line">      <span class="comment">// 未生成pdf的html页面高度</span></span><br><span class="line">      <span class="keyword">let</span> leftHeight = contentHeight;</span><br><span class="line">      <span class="comment">// 页面偏移</span></span><br><span class="line">      <span class="keyword">let</span> position = <span class="number">0</span>;</span><br><span class="line">      <span class="comment">// a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高</span></span><br><span class="line">      <span class="keyword">const</span> imgWidth = <span class="number">595.28</span>;</span><br><span class="line">      <span class="keyword">const</span> imgHeight = (<span class="number">592.28</span> / contentWidth) * contentHeight;</span><br><span class="line">      <span class="keyword">const</span> pageData = canvas.<span class="title function_">toDataURL</span>(<span class="string">&quot;image/jpeg&quot;</span>, <span class="number">1.0</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(pageData);</span><br><span class="line">      <span class="comment">// a4纸纵向，一般默认使用；new JsPDF(&#x27;landscape&#x27;); 横向页面</span></span><br><span class="line">      <span class="keyword">const</span> <span class="variable constant_">PDF</span> = <span class="keyword">new</span> <span class="title class_">JsPDF</span>(<span class="string">&quot;&quot;</span>, <span class="string">&quot;pt&quot;</span>, <span class="string">&quot;a4&quot;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 当内容未超过pdf一页显示的范围，无需分页</span></span><br><span class="line">      <span class="keyword">if</span> (leftHeight &lt; pageHeight) &#123;</span><br><span class="line">        <span class="comment">// addImage(pageData, &#x27;JPEG&#x27;, 左，上，宽度，高度)设置</span></span><br><span class="line">        <span class="variable constant_">PDF</span>.<span class="title function_">addImage</span>(pageData, <span class="string">&quot;JPEG&quot;</span>, <span class="number">0</span>, <span class="number">0</span>, imgWidth, imgHeight);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 超过一页时，分页打印（每页高度841.89）</span></span><br><span class="line">        <span class="keyword">while</span> (leftHeight &gt; <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="variable constant_">PDF</span>.<span class="title function_">addImage</span>(pageData, <span class="string">&quot;JPEG&quot;</span>, <span class="number">0</span>, position, imgWidth, imgHeight);</span><br><span class="line">          leftHeight -= pageHeight;</span><br><span class="line">          position -= <span class="number">841.89</span>;</span><br><span class="line">          <span class="keyword">if</span> (leftHeight &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="variable constant_">PDF</span>.<span class="title function_">addPage</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="variable constant_">PDF</span>.<span class="title function_">save</span>(title + <span class="string">&quot;.pdf&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;打印失败&quot;</span>, error);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上述，使用 html2Canvas 将 html 元素转成 canvas，接着转成 data URL，<br>然后使用 jspdf 导出 pdf 文件</p>
+<p>当前项目中，操作的对象已经是 canvas，因此无需借助 html2Canvas，<br>另外，导出 pdf 的时候希望是一张大图片，不能分页，因此代码需要有所调整</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 1.把 canvas 缩放到可视区域内（为方便用户操作，画图过程中允许放大）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">visibleCanvas</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> height = data.<span class="property">stage</span>.<span class="title function_">height</span>();</span><br><span class="line">      <span class="keyword">let</span> scaleWidth = data.<span class="property">stage</span>.<span class="title function_">width</span>() / data.<span class="property">canvas</span>.<span class="property">width</span>;</span><br><span class="line">      <span class="keyword">let</span> scaleHeight = data.<span class="property">stage</span>.<span class="title function_">height</span>() / data.<span class="property">canvas</span>.<span class="property">height</span>;</span><br><span class="line">      data.<span class="property">scaleFull</span> = scaleWidth &lt; scaleHeight ? scaleWidth : scaleHeight;</span><br><span class="line">      <span class="comment">// 把舞台重置到可视区域</span></span><br><span class="line">      data.<span class="property">stage</span>.<span class="title function_">setAttrs</span>(&#123;</span><br><span class="line">        <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="attr">scaleX</span>: data.<span class="property">scaleFull</span>,</span><br><span class="line">        <span class="attr">scaleY</span>: data.<span class="property">scaleFull</span></span><br><span class="line">      &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.生成 data url，并导出</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">exportPDF</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> toDataURL = data.<span class="property">stage</span>.<span class="title function_">toDataURL</span>(&#123; <span class="attr">pixelRatio</span>: <span class="number">3</span> &#125;); <span class="comment">// 分辨率提高3倍</span></span><br><span class="line">  <span class="title function_">htmlToPdf</span>(toDataURL data.<span class="property">canvas</span>.<span class="property">width</span>, data.<span class="property">canvas</span>.<span class="property">height</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@method</span> <span class="variable">htmlToPdf</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">DOMString</span>&#125; <span class="variable">ObjectURL</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; width 画布宽度</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; height 画布宽度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">htmlToPdf</span> = (<span class="params">ObjectURL, width, height</span>) =&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置pdf的尺寸，pdf要使用pt单位 1px= 0.75pt</span></span><br><span class="line">  <span class="comment">// 3为上面的scale 缩放了3倍</span></span><br><span class="line">  <span class="keyword">let</span> pdfX = (width / <span class="number">3</span>) * <span class="number">0.75</span>;</span><br><span class="line">  <span class="keyword">let</span> pdfY = (height / <span class="number">3</span>) * <span class="number">0.75</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化jspdf 第一个参数方向：默认&#x27;&#x27;为纵向，&quot;landscape&quot;为横向，</span></span><br><span class="line">  <span class="comment">// 第二个参数设置pdf内容图片使用的长度单位为pt，</span></span><br><span class="line">  <span class="comment">// 第三个参数为PDF的大小，单位是pt</span></span><br><span class="line">  <span class="keyword">let</span> <span class="variable constant_">PDF</span> = <span class="keyword">new</span> <span class="title function_">jsPDF</span>(<span class="string">&quot;landscape&quot;</span>, <span class="string">&quot;pt&quot;</span>, [pdfX, pdfY]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将内容图片添加到pdf中，因为内容宽高和pdf宽高一样，就只需要一页，位置就是 0,0</span></span><br><span class="line">  <span class="variable constant_">PDF</span>.<span class="title function_">addImage</span>(<span class="title class_">ObjectURL</span>, <span class="string">&quot;jpeg&quot;</span>, <span class="number">0</span>, <span class="number">0</span>, pdfX, pdfY);</span><br><span class="line">  <span class="variable constant_">PDF</span>.<span class="title function_">save</span>(<span class="string">&quot;download.pdf&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<!-- 补充下载pdf文件和视频 -->
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/07/29/jspdf/" data-id="cl66689m30004doua7ydw8cby" data-title="jspdf" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-node-modules-cache" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/07/27/node-modules-cache/" class="article-date">
@@ -109,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/27/node-modules-cache/" data-id="cl63f7p260004xwua1vcbeqsl" data-title="node_modules-cache" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/27/node-modules-cache/" data-id="cl66689m30005doua5v4uc35f" data-title="node_modules-cache" class="article-share-link">Share</a>
       
       
       
@@ -204,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl63f7p260003xwuabs85bec3" data-title="npm-package" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl66689m20003doua6xkk6s7a" data-title="npm-package" class="article-share-link">Share</a>
       
       
       
@@ -266,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/25/download-resource/" data-id="cl63f7p1x0000xwua1p2e8gaq" data-title="downloadResource" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/25/download-resource/" data-id="cl66689m00001douaefnf5adh" data-title="downloadResource" class="article-share-link">Share</a>
       
       
       
@@ -356,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/10/new-type/" data-id="cl63f7p230001xwuabk0l62ip" data-title="new_type" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/10/new-type/" data-id="cl66689m10002doua2xyi2da9" data-title="new_type" class="article-share-link">Share</a>
       
       
       
@@ -407,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/04/hello-world/" data-id="cl63f7p250002xwuacz7e2uew" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/04/hello-world/" data-id="cl66689lv0000douafmgz4qhf" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -450,6 +499,10 @@
       <ul>
         
           <li>
+            <a href="/2022/07/29/jspdf/">jspdf</a>
+          </li>
+        
+          <li>
             <a href="/2022/07/27/node-modules-cache/">node_modules-cache</a>
           </li>
         
@@ -463,10 +516,6 @@
         
           <li>
             <a href="/2022/03/10/new-type/">new_type</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/04/hello-world/">Hello World</a>
           </li>
         
       </ul>
