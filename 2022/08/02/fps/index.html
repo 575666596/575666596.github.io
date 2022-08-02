@@ -4,17 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2022/3 | blog page</title>
+  <title>fps | blog page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="just a test">
-<meta property="og:type" content="website">
-<meta property="og:title" content="blog page">
-<meta property="og:url" content="http://example.com/archives/2022/03/index.html">
+  <meta name="description" content="fps(Frame per Second) 每秒帧数率 canvas 绘图时，发现比较卡顿打开 chrome 浏览器 渲染-针渲染统计信息，可以看到，绘图中，每秒帧数率，稳定在58.2，绘图后降低至20-30，页面非常卡顿   此外 chrome 性能面板，可以模拟降低CPU性能，降低4倍后，绘图也会十分卡顿  性能优化 123&#x2F;&#x2F; 绘制代码里加上节流const drawing &#x3D; () &#x3D;&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fps">
+<meta property="og:url" content="http://example.com/2022/08/02/fps/index.html">
 <meta property="og:site_name" content="blog page">
-<meta property="og:description" content="just a test">
+<meta property="og:description" content="fps(Frame per Second) 每秒帧数率 canvas 绘图时，发现比较卡顿打开 chrome 浏览器 渲染-针渲染统计信息，可以看到，绘图中，每秒帧数率，稳定在58.2，绘图后降低至20-30，页面非常卡顿   此外 chrome 性能面板，可以模拟降低CPU性能，降低4倍后，绘图也会十分卡顿  性能优化 123&#x2F;&#x2F; 绘制代码里加上节流const drawing &#x3D; () &#x3D;&amp;gt">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/images/005.png">
+<meta property="og:image" content="http://example.com/images/006.png">
+<meta property="og:image" content="http://example.com/images/007.png">
+<meta property="article:published_time" content="2022-08-02T08:08:30.000Z">
+<meta property="article:modified_time" content="2022-08-02T08:18:35.215Z">
 <meta property="article:author" content="575666596">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/005.png">
   
     <link rel="alternate" href="/atom.xml" title="blog page" type="application/atom+xml">
   
@@ -75,58 +81,60 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/10/new-type/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-10T11:57:02.000Z" itemprop="datePublished">Mar 10</time>
+        <section id="main"><article id="post-fps" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/02/fps/" class="article-date">
+  <time class="dt-published" datetime="2022-08-02T08:08:30.000Z" itemprop="datePublished">2022-08-02</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/10/new-type/">new_type</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      fps
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/04/hello-world/" class="archive-article-date">
-  <time class="dt-published" datetime="2022-03-04T07:22:08.500Z" itemprop="datePublished">Mar 4</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/04/hello-world/">Hello World</a>
-    </h1>
-  
+        <p>fps(Frame per Second) 每秒帧数率</p>
+<p>canvas 绘图时，发现比较卡顿<br>打开 chrome 浏览器 渲染-针渲染统计信息，可以看到，绘图中，每秒帧数率，稳定在58.2，绘图后降低至20-30，页面非常卡顿</p>
+<p><img src="/../images/005.png" alt="绘图前"></p>
+<p><img src="/../images/006.png" alt="绘图中"></p>
+<p>此外 chrome 性能面板，可以模拟降低CPU性能，降低4倍后，绘图也会十分卡顿</p>
+<p><img src="/../images/007.png" alt="降低CPU"></p>
+<p>性能优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绘制代码里加上节流</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">drawing</span> = (<span class="params"></span>) =&gt; &#123;&#125; </span><br><span class="line">_.<span class="title function_">throttle</span>(drawing, <span class="number">16</span>) <span class="comment">// 1000/60=16.7</span></span><br></pre></td></tr></table></figure>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/02/fps/" data-id="cl6bws7p50004ocua1u1khwhn" data-title="fps" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/07/29/jspdf/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">jspdf</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

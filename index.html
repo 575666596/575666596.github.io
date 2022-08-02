@@ -77,6 +77,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-fps" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/02/fps/" class="article-date">
+  <time class="dt-published" datetime="2022-08-02T08:08:30.000Z" itemprop="datePublished">2022-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/08/02/fps/">fps</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>fps(Frame per Second) 每秒帧数率</p>
+<p>canvas 绘图时，发现比较卡顿<br>打开 chrome 浏览器 渲染-针渲染统计信息，可以看到，绘图中，每秒帧数率，稳定在58.2，绘图后降低至20-30，页面非常卡顿</p>
+<p><img src="/../images/005.png" alt="绘图前"></p>
+<p><img src="/../images/006.png" alt="绘图中"></p>
+<p>此外 chrome 性能面板，可以模拟降低CPU性能，降低4倍后，绘图也会十分卡顿</p>
+<p><img src="/../images/007.png" alt="降低CPU"></p>
+<p>性能优化</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 绘制代码里加上节流</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">drawing</span> = (<span class="params"></span>) =&gt; &#123;&#125; </span><br><span class="line">_.<span class="title function_">throttle</span>(drawing, <span class="number">16</span>) <span class="comment">// 1000/60=16.7</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/08/02/fps/" data-id="cl6bws7p50004ocua1u1khwhn" data-title="fps" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-jspdf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/07/29/jspdf/" class="article-date">
@@ -114,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/29/jspdf/" data-id="cl66689m30004doua7ydw8cby" data-title="jspdf" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/29/jspdf/" data-id="cl6bws7p40003ocua90nh3hn6" data-title="jspdf" class="article-share-link">Share</a>
       
       
       
@@ -158,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/27/node-modules-cache/" data-id="cl66689m30005doua5v4uc35f" data-title="node_modules-cache" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/27/node-modules-cache/" data-id="cl6bws7p60006ocuafxq0ektg" data-title="node_modules-cache" class="article-share-link">Share</a>
       
       
       
@@ -253,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl66689m20003doua6xkk6s7a" data-title="npm-package" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/26/npm-package/" data-id="cl6bws7p50005ocuaeu5xcd8c" data-title="npm-package" class="article-share-link">Share</a>
       
       
       
@@ -315,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/07/25/download-resource/" data-id="cl66689m00001douaefnf5adh" data-title="downloadResource" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/07/25/download-resource/" data-id="cl6bws7ox0000ocuackppaulo" data-title="downloadResource" class="article-share-link">Share</a>
       
       
       
@@ -405,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/10/new-type/" data-id="cl66689m10002doua2xyi2da9" data-title="new_type" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/10/new-type/" data-id="cl6bws7p20002ocuadvraekhj" data-title="new_type" class="article-share-link">Share</a>
       
       
       
@@ -456,7 +502,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/03/04/hello-world/" data-id="cl66689lv0000douafmgz4qhf" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/03/04/hello-world/" data-id="cl6bws7p10001ocua072m0v13" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -486,7 +532,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
     </div>
   </div>
 
@@ -497,6 +543,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/08/02/fps/">fps</a>
+          </li>
         
           <li>
             <a href="/2022/07/29/jspdf/">jspdf</a>
@@ -512,10 +562,6 @@
         
           <li>
             <a href="/2022/07/25/download-resource/">downloadResource</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/10/new-type/">new_type</a>
           </li>
         
       </ul>
